@@ -24,11 +24,11 @@ function Routes() {
         case 'concerts-list-page': return <Auth role={[0, 1]}><ConcertsListPage /></Auth >
         case 'categories-list-page': return <Auth role={[1]}><CategoriesListPage /></Auth >
         case 'managers-list-page': return <Auth role={[1]}><ManagersListPage /></Auth>
-        case 'concert-edit-page': return <Auth role={[1]}><ConcertEditPage id={data.id} /></Auth>
-        case 'category-edit-page': return <CategoryEditPage id={data.id} />
+        case 'concert-edit-page': return <Auth role={[0, 1]}><ConcertEditPage id={data.id} /></Auth>
+        case 'category-edit-page': return <Auth role={[1]}><CategoryEditPage id={data.id} /></Auth>
         case 'manager-edit-page': return <ManagerEditPage id={data.id} />
         case 'create-concert-page': return <Auth role={[0, 1]}><CreateConcertPage /></Auth >
-        case 'create-category-page': return <Auth role={[0, 1]}><CategoryCreatePage /></Auth >
+        case 'create-category-page': return <Auth role={[1]}><CategoryCreatePage /></Auth >
         case 'login': return <Login />
         case 'register': return <Register />
         default: return null
