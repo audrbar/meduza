@@ -169,6 +169,7 @@ export const GlobalProvider = ({ children }) => {
                 setLogged,
                 deletecategory,
                 login,
+                categoriesList,
                 createCategory,
                 editCategory
             }}

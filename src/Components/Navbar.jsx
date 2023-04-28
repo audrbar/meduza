@@ -27,6 +27,16 @@ const Navbar = () => {
                                 ) : null
                         }
                         {
+                            authName ?
+                                (
+                                    <li className="nav-item">
+                                        <span onClick={_ => setRoute('categories-list-page')} role="button" className={
+                                            'nav-link' + (route === 'categories-list-page' ? ' active' : '')
+                                        }>Categories</span>
+                                    </li>
+                                ) : null
+                        }
+                        {
                             authName && (authRole === 1) ?
                                 (
                                     <li className="nav-item">
