@@ -1,10 +1,12 @@
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { GlobalProvider } from './Components/GlobalContext';
+import Routes from './Components/Routes';
 
 function App() {
   return (
-    <div className="App">
-      <h1>labas</h1>
-    </div>
+    <GlobalProvider>
+      <Routes />
+    </GlobalProvider>
   );
 }
 
