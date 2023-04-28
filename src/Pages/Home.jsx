@@ -1,3 +1,4 @@
+import ConcertsList from "../Components/ConcertsList";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Totals from "../Components/Totals";
@@ -20,6 +21,7 @@ function Home() {
                 </div>
             </div>
             <Totals />
+            <ConcertsList />
             <Footer />
         </>
     )

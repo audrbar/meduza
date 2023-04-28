@@ -67,14 +67,6 @@ const ConcertEdit = ({ id }) => {
                                 value={active}
                                 onChange={e => setActive(e.target.value)}
                             />
-                            {/* <label htmlFor="time" className="form-label">Concert date</label>
-                            <input
-                                id="time"
-                                className="form-control"
-                                type="date"
-                                value={time}
-                                onChange={(e) => setTime(e.target.value)}
-                            /> */}
                             <div className="flex flex-row items-center justify-between">
                                 <button
                                     className="btn btn-outline-primary mt-2"

@@ -22,7 +22,7 @@ function Routes() {
     switch (path) {
         case 'home': return <Home />
         case 'concerts-list-page': return <Auth role={[0, 1]}><ConcertsListPage /></Auth >
-        case 'categories-list-page': return <Auth role={[0, 1]}><CategoriesListPage /></Auth >
+        case 'categories-list-page': return <Auth role={[1]}><CategoriesListPage /></Auth >
         case 'managers-list-page': return <Auth role={[1]}><ManagersListPage /></Auth>
         case 'concert-edit-page': return <Auth role={[1]}><ConcertEditPage id={data.id} /></Auth>
         case 'category-edit-page': return <CategoryEditPage id={data.id} />

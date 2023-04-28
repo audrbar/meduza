@@ -27,7 +27,7 @@ const Navbar = () => {
                                 ) : null
                         }
                         {
-                            authName ?
+                            authName && (authRole === 1) ?
                                 (
                                     <li className="nav-item">
                                         <span onClick={_ => setRoute('categories-list-page')} role="button" className={
