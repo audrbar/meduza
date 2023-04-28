@@ -40,17 +40,6 @@ const ConcertsList = () => {
                                         <button type="button" className="btn btn-outline-danger m-1" onClick={() => deleteConcert(concert.id)}>DELETE</button>
                                     </div>
                                     <div className="d-flex flex-column align-items-end justify-content-center">
-                                        {/* <p>{concert.container_id ? (<span style={{ color: 'green' }}>The concert is loaded</span>) : (
-                                            <span style={{ color: 'crimson' }}>The concert is not loaded</span>
-                                        )}</p> */}
-                                        {/* {
-                                            concert.container_id ?
-                                                (
-                                                    <button type="button" className="btn btn-outline-danger m-1" onClick={() => setRoute({ path: 'concert-load-page', data: { id: concert.id } })}>CHANGE</button>
-                                                ) : (
-                                                    <button type="button" className="btn btn-outline-primary m-1" onClick={() => setRoute({ path: 'concert-load-page', data: { id: concert.id } })}>LOAD</button>
-                                                )
-                                        } */}
                                     </div>
                                 </li>
                             </ul>
