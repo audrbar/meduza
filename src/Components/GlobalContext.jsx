@@ -12,7 +12,7 @@ export const GlobalProvider = ({ children }) => {
     const [authName, setAuthName] = useState(null);
     const [authRole, setAuthRole] = useState(3);
     const [list, setList] = useState(null);
-    const [contList, setContList] = useState(null);
+    const [categoriesList, setCategoriesList] = useState(null);
     const [managersList, setManagersList] = useState(null);
     const [response, setResponse] = useState();
     const uuid = uuidv4();
@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
     const after = (response) => {
         setResponse(response);
         getConcerts();
-        getContainers();
+        getCategories();
         getManagers();
         setMessages(m => [...m, { ...response.data.message, id: uuid }]);
         setTimeout(() => {
@@ -28,7 +28,7 @@ export const GlobalProvider = ({ children }) => {
         }, 4000);
     }
 
-    // ******************* Get, Create, Update, Delete concerts **********************
+    // ******************* Get, Create, Update, Delete CONCERTS **********************
     const getConcerts = () => {
         axios.get('http://localhost:3003/concerts', { withCredentials: true })
             .then(res => setList(res.data));
@@ -49,7 +49,7 @@ export const GlobalProvider = ({ children }) => {
     };
 
     const editConcert = (concert) => {
-        axios.put('http://localhost:3003/concerts/' + concert.id, concert, { withCredentials: true })
+        axios.put('http://localhost:3003/concert/' + concert.id, concert, { withCredentials: true })
             .then(after);
     };
 
@@ -58,29 +58,29 @@ export const GlobalProvider = ({ children }) => {
             .then(after);
     };
 
-    // **************** Get, Create, Update, Delete CONTAINERS AND concerts *****************
+    // **************** Get, Create, Update, Delete CATEGORIES *****************
 
-    const getContainers = () => {
-        axios.get('http://localhost:3003/containers', { withCredentials: true })
-            .then(res => setContList(res.data));
+    const getCategories = () => {
+        axios.get('http://localhost:3003/categories', { withCredentials: true })
+            .then(res => setCategoriesList(res.data));
     };
 
     useEffect(() => {
-        getContainers();
+        getCategories();
     }, []);
 
-    const createCont = (createC) => {
-        axios.post('http://localhost:3003/containers', createC, { withCredentials: true })
+    const createCategory = (createC) => {
+        axios.post('http://localhost:3003/categories', createC, { withCredentials: true })
             .then(after);
     }
 
-    const editContainer = (container) => {
-        axios.put('http://localhost:3003/container/' + container.cont_id, container, { withCredentials: true })
+    const editCategory = (category) => {
+        axios.put('http://localhost:3003/category/' + category.cont_id, category, { withCredentials: true })
             .then(after);
     };
 
-    const deleteContainer = (cont_id) => {
-        axios.delete('http://localhost:3003/container/' + cont_id, { withCredentials: true })
+    const deletecategory = (id) => {
+        axios.delete('http://localhost:3003/category/' + id, { withCredentials: true })
             .then(after);
     };
 
@@ -148,9 +148,6 @@ export const GlobalProvider = ({ children }) => {
             value={{
                 list,
                 loadConcert,
-                setContList,
-                createCont,
-                contList,
                 editConcert,
                 deleteConcert,
                 createConcert,
@@ -170,9 +167,10 @@ export const GlobalProvider = ({ children }) => {
                 logOut,
                 logged,
                 setLogged,
-                editContainer,
-                deleteContainer,
-                login
+                deletecategory,
+                login,
+                createCategory,
+                editCategory
             }}
         >
             {children}

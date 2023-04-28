@@ -42,46 +42,46 @@ app.use(
 );
 app.use(express.json());
 
-// ****************** Get, Update, Delete CONTAINERS *****************
-// get all CONTAINERS
-app.get('/containers', (req, res) => {
-    const sql = ` SELECT cont_id, cont_title, cont_type FROM containers`;
+// ****************** Get, Update, Delete CATEGORIES *****************
+// get all categories
+app.get('/categories', (req, res) => {
+    const sql = ` SELECT id, title, type FROM categories`;
     con.query(sql, (err, result) => {
         if (err) throw err;
         res.json({ data: result });
     });
 });
 
-// create a new CONTAINER
-app.post('/containers', (req, res) => {
-    const sql = `INSERT INTO containers (cont_title, cont_type) VALUES (?, ?)`;
-    con.query(sql, [req.body.cont_title, req.body.cont_type], (err) => {
+// create a new category
+app.post('/categories', (req, res) => {
+    const sql = `INSERT INTO categories (title, type) VALUES (?, ?)`;
+    con.query(sql, [req.body.title, req.body.type], (err) => {
         if (err) throw err;
         res.json({
-            message: { text: 'New container was created.' }
+            message: { text: 'New category was created.' }
         });
     });
 });
 
-// change CONTAINER type
-app.put('/container/:id', (req, res) => {
-    const sql = `UPDATE containers SET cont_type = ? WHERE cont_id = ?`;
-    const params = [req.body.cont_type, req.params.id];
+// change category type
+app.put('/category/:id', (req, res) => {
+    const sql = `UPDATE categories SET title = ?, type = ? WHERE cont_id = ?`;
+    const params = [req.body.title, req.body.type, req.params.id];
     con.query(sql, params, (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'The container type was changed.' }
+            msg: { text: 'The category type was changed.' }
         });
     });
 });
 
-// delete CONTAINER
-app.delete('/container/:cont_id', (req, res) => {
-    const sql = `DELETE FROM containers WHERE cont_id = ?`;
+// delete category
+app.delete('/category/:id', (req, res) => {
+    const sql = `DELETE FROM categories WHERE id = ?`;
     con.query(sql, [req.params.cont_id], (err) => {
         if (err) throw err;
         res.json({
-            msg: { text: 'The container was deleted.' }
+            msg: { text: 'The category was deleted.' }
         });
     });
 });
@@ -128,8 +128,8 @@ app.post('/concerts', (req, res) => {
         fs.writeFileSync('./public/' + fileName, file);
     }
 
-    const sql = `INSERT INTO concerts (title, category, photo, time, place, active) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-    con.query(sql, [req.body.title, req.body.category, fileName, req.body.time, req.body.place, req.body.active], (err) => {
+    const sql = `INSERT INTO concerts (title, category, photo, place) VALUES (?, ?, ?, ?)`;
+    con.query(sql, [req.body.title, req.body.category, fileName, req.body.place], (err) => {
         if (err) throw err;
         res.json({
             message: { text: 'New cargo item was created.' }
@@ -137,7 +137,7 @@ app.post('/concerts', (req, res) => {
     });
 });
 // edit concert by its id
-app.put('/concerts/:id', (req, res) => {
+app.put('/concert/:id', (req, res) => {
     let fileName = null;
 
     if (req.body.delImg) {
@@ -167,11 +167,11 @@ app.put('/concerts/:id', (req, res) => {
     let sql;
     let params;
     if (!req.body.delImg && req.body.file) {
-        sql = `UPDATE concerts SET title = ?, category = ?, photo = ?, time = ?, active = ? WHERE id = ?`;
-        params = [req.body.title, req.body.category, fileName, req.body.time, req.body.active, req.params.id];
+        sql = `UPDATE concerts SET title = ?, place = ?, category = ?, photo, active = ? WHERE id = ?`;
+        params = [req.body.title, req.body.place, req.body.category, fileName, req.body.active, req.params.id];
     } else {
-        sql = `UPDATE concerts SET title = ?, category = ?, time = ?, active = ? WHERE id = ?`;
-        params = [req.body.title, req.body.category, req.body.time, req.body.active, req.params.id];
+        sql = `UPDATE concerts SET title = ?, place = ?, category = ?, active = ? WHERE id = ?`;
+        params = [req.body.title, req.body.place, req.body.category, req.body.active, req.params.id];
     }
     con.query(sql, params, (err) => {
         if (err) throw err;
@@ -182,12 +182,12 @@ app.put('/concerts/:id', (req, res) => {
 });
 // load concert on cont
 app.put('/loadconcert/:id', (req, res) => {
-    let sql = `UPDATE concerts SET container_id = ? WHERE concerts.id = ?`;
+    let sql = `UPDATE concerts SET category_id = ? WHERE concerts.id = ?`;
 
     // console.log('req.body: ', req.body);
     // console.log('req.params: ', req.params);
 
-    con.query(sql, [req.body.container_id, req.params.id], (err, result) => {
+    con.query(sql, [req.body.category_id, req.params.id], (err, result) => {
         if (err) throw err;
         res.json({
             message: { text: 'The cargo was loaded.' }

@@ -1,6 +1,6 @@
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-// import Totals from "../Components/Totals";
+import Totals from "../Components/Totals";
 
 function Home() {
 
@@ -19,7 +19,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            {/* <Totals /> */}
+            <Totals />
             <Footer />
         </>
     )

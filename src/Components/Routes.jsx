@@ -3,15 +3,15 @@ import { Global } from "./GlobalContext";
 import Home from "../Pages/Home";
 import Login from "./Login";
 import Register from "./Register";
-// import Auth from "./Auth";
-// import CargosListPage from "../Pages/CargosListPage";
+import Auth from "./Auth";
+import ConcertsListPage from "../Pages/ConcertsListPage";
 // import ContainersListPage from "../Pages/ContainersListPage";
-// import ManagersListPage from "../Pages/ManagersListPage";
-// import CargoEditPage from "../Pages/CargoEditPage";
-// import CargoLoadPage from "../Pages/CargoLoadPage";
+import ManagersListPage from "../Pages/ManagersListPage";
+import ConcertEditPage from "../Pages/ConcertEditPage";
+// import ConcertLoadPage from "../Pages/ConcertLoadPage";
 // import ContainerEditPage from "../Pages/ContainerEditPage";
-// import ManagerEditPage from "../Pages/ManagerEditPage";
-// import CreateCargoPage from "../Pages/CreateCargoPage";
+import ManagerEditPage from "../Pages/ManagerEditPage";
+import CreateConcertPage from "../Pages/CreateConcertPage";
 // import CreateContainerPage from "../Pages/CreateContainerPage";
 
 function Routes() {
@@ -22,14 +22,14 @@ function Routes() {
 
     switch (path) {
         case 'home': return <Home />
-        // case 'cargos-list-page': return <Auth role={[0, 1]}><CargosListPage /></Auth >
+        case 'concerts-list-page': return <Auth role={[0, 1]}><ConcertsListPage /></Auth >
         // case 'containers-list-page': return <Auth role={[0, 1]}><ContainersListPage /></Auth >
-        // case 'managers-list-page': return <Auth role={[1]}><ManagersListPage /></Auth>
-        // case 'cargo-edit-page': return <CargoEditPage id={data.id} />
-        // case 'cargo-load-page': return <CargoLoadPage id={data.id} />
+        case 'managers-list-page': return <Auth role={[1]}><ManagersListPage /></Auth>
+        case 'concert-edit-page': return <Auth role={[1]}><ConcertEditPage id={data.id} /></Auth>
+        // case 'concert-load-page': return <ConcertLoadPage id={data.id} />
         // case 'container-edit-page': return <ContainerEditPage id={data.id} />
-        // case 'manager-edit-page': return <ManagerEditPage id={data.id} />
-        // case 'create-cargo-page': return <Auth role={[0, 1]}><CreateCargoPage /></Auth >
+        case 'manager-edit-page': return <ManagerEditPage id={data.id} />
+        case 'create-concert-page': return <Auth role={[0, 1]}><CreateConcertPage /></Auth >
         // case 'create-container-page': return <Auth role={[0, 1]}><CreateContainerPage /></Auth >
         case 'login': return <Login />
         case 'register': return <Register />

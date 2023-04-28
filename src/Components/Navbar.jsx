@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid col-10">
-                <div className="navbar-brand" onClick={_ => setRoute('home')} role="button">CargoInt</div>
+                <div className="navbar-brand" onClick={_ => setRoute('home')} role="button">MeduzaConc</div>
                 <div className="nav-top">
                     <ul className="navbar-nav">
                         <li className="nav-item">
@@ -20,19 +20,9 @@ const Navbar = () => {
                             authName ?
                                 (
                                     <li className="nav-item">
-                                        <span onClick={_ => setRoute('cargos-list-page')} role="button" className={
-                                            'nav-link' + (route === 'cargos-list-page' ? ' active' : '')
-                                        }>Cargos</span>
-                                    </li>
-                                ) : null
-                        }
-                        {
-                            authName ?
-                                (
-                                    <li className="nav-item">
-                                        <span onClick={_ => setRoute('containers-list-page')} role="button" className={
-                                            'nav-link' + (route === 'containers-list-page' ? ' active' : '')
-                                        }>Containers</span>
+                                        <span onClick={_ => setRoute('concerts-list-page')} role="button" className={
+                                            'nav-link' + (route === 'concerts-list-page' ? ' active' : '')
+                                        }>Concerts</span>
                                     </li>
                                 ) : null
                         }
